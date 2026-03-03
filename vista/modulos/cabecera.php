@@ -16,7 +16,8 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <img class="logo" src="vista/img/logo.jpeg" alt="logo">
+                <link rel="stylesheet" href="/ProtecFire-Nuci/vista/css/index.css">
+                <img class="logo" src="/ProtecFire-Nuci/vista/img/logo.jpeg" alt="logo">
 
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

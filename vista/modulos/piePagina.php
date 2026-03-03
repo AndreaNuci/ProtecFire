@@ -45,12 +45,14 @@
         <hr class="bg-light">
 
         <!-- DERECHOS -->
-        <div class="text-center">
-            <p class="mb-0">
-                © 2026 Sistema de Monitoreo de Incendios | Todos los derechos reservados
-            </p>
-        </div>
+        <footer class="footer-custom text-white pt-5 pb-3">
+    <div class="container text-center">
+        <hr class="bg-light">
+        <p class="mb-0">
+            © 2026 Sistema de Monitoreo de Incendios
+        </p>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
