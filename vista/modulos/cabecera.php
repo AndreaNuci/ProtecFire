@@ -46,95 +46,180 @@
         </div>
     </nav>
 
-    <!-- 🔐 MODAL LOGIN -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
+  <?php 
+  include "modelo/conexion.php";
+  include "controlador/registro.php";
+  ?>  
+<!-- 🔐 MODAL LOGIN -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">Iniciar Sesión</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
+            <!-- Cabecera roja -->
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Iniciar Sesión</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
 
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Correo</label>
-                            <input type="email" class="form-control" placeholder="correo@ejemplo.com" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" placeholder="********" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-danger w-100">
-                            Entrar
-                        </button>
-                    </form>
-
-                    <div class="text-center mt-3">
-                        <small>
-                            ¿Todavía no tienes cuenta?
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#registroModal" data-bs-dismiss="modal" class="text-danger fw-bold">
-                                Regístrate
-                            </a>
-                        </small>
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" name="email" class="form-control" placeholder="correo@ejemplo.com" required>
                     </div>
-                </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" name="contraseña" class="form-control" placeholder="********" required>
+                    </div>
+
+                    <button type="submit" name="iniciar" class="btn btn-danger w-100">
+                        Entrar
+                    </button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <small>
+                        ¿Todavía no tienes cuenta?
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#registroModal" data-bs-dismiss="modal" class="text-danger fw-bold">
+                            Regístrate
+                        </a>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal de mensajes -->
+<div class="modal fade" id="mensajeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <!-- Cabecera gris clarito -->
+            <div class="modal-header bg-light text-dark">
+                <h5 class="modal-title fw-bold">Aviso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Cuerpo del mensaje -->
+            <div class="modal-body">
+                <p id="mensajeTexto">
+                    <?php 
+                    if(isset($_SESSION['mensaje'])) { 
+                        echo $_SESSION['mensaje']; 
+                        unset($_SESSION['mensaje']); 
+                    } 
+                    ?>
+                </p>
+            </div>
+
+            <!-- Botón rojo pequeño a la derecha -->
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Aceptar</button>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Script para abrir modal automáticamente si hay mensaje -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var mensajeTexto = document.getElementById('mensajeTexto');
+    if (mensajeTexto && mensajeTexto.textContent.trim() !== "") {
+        var mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
+        mensajeModal.show();
+    }
+});
+</script>
 
 
-    <!-- 📝 MODAL REGISTRO -->
-    <div class="modal fade" id="registroModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
+  <!-- 📝 MODAL REGISTRO -->
+<div class="modal fade" id="registroModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">Crear Cuenta</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Crear Cuenta</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
 
-                <div class="modal-body">
-                    <form>
-
-                        <div class="mb-3">
-                            <label class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Correo</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-danger w-100">
-                            Registrarse
-                        </button>
-                    </form>
-
-                    <div class="text-center mt-3">
-                        <small>
-                            ¿Ya tienes cuenta?
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal" class="text-danger fw-bold">
-                                Inicia sesión
-                            </a>
-                        </small>
+            <div class="modal-body">
+                <form method="POST" action=""> <!-- Enviar al mismo archivo -->
+                    <div class="mb-3">
+                        <label class="form-label">Nombre completo</label>
+                        <input type="text" name="nombre" class="form-control" required>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Número</label>
+                        <input type="number" name="telefono" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" name="contraseña" class="form-control" required>
+                    </div>
+                    <button type="submit" name="registrar" class="btn btn-danger w-100">
+                        Registrarse
+                    </button>
+                </form>
 
+                <div class="text-center mt-3">
+                    <small>
+                        ¿Ya tienes cuenta?
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal" class="text-danger fw-bold">
+                            Inicia sesión
+                        </a>
+                    </small>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
+<!-- Modal de mensajes -->
+<div class="modal fade" id="mensajeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <!-- Cabecera gris clarito -->
+            <div class="modal-header bg-light text-dark">
+                <h5 class="modal-title fw-bold">Aviso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Cuerpo del mensaje -->
+            <div class="modal-body">
+                <p id="mensajeTexto">
+                    <?php 
+                    if(isset($_SESSION['mensaje'])) { 
+                        echo $_SESSION['mensaje']; 
+                        unset($_SESSION['mensaje']); 
+                    } 
+                    ?>
+                </p>
+            </div>
+
+            <!-- Botón rojo pequeño a la derecha -->
+            <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script para abrir modal automáticamente si hay mensaje -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var mensajeTexto = document.getElementById('mensajeTexto');
+    if (mensajeTexto && mensajeTexto.textContent.trim() !== "") {
+        var mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
+        mensajeModal.show();
+    }
+});
+</script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
