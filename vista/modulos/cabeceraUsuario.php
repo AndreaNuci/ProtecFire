@@ -47,7 +47,7 @@
     </ul>
 </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cerrar sesión</a>
+                        <a class="nav-link" href="../index.php">Cerrar sesión</a>
                     </li>
 
                   
