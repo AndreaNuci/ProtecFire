@@ -1,0 +1,42 @@
+
+ .card {
+      background-color: #1a1a1a; /* Gris oscuro para tarjetas */
+      border: 1px solid #c82333;
+    }
+    .sensor-status {
+      font-weight: bold;
+    }
+    .status-normal { color: #28a745; } /* Verde */
+    .status-warning { color: #ffc107; } /* Amarillo */
+    .status-danger { color: #dc3545; } /* Rojo */
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #1a1a1a;
+      border: 2px solid #c82333;
+      border-radius: 10px;
+      padding: 10px;
+      z-index: 1000;
+    }
+    .alert.alert-danger {
+    animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(220,53,69,0.8);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(220,53,69,0.4);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(220,53,69,0);
+    }
+}
+    #chatbot h5 { color: #c82333; }
+
