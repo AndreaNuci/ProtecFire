@@ -18,8 +18,11 @@ $usuario = $_SESSION['usuario'];
 $foto = $usuario['foto'] ?? "default.png";
 
  
-    include "modulos/cabeceraUsuario.php"; 
+    include "modulos/cabecera.php"; 
 ?>
+
+<link rel="stylesheet" href="vista/css/index.css">
+<link rel="stylesheet" href="css/perfil.css">
 
 <div class="perfil-wrapper">
 
