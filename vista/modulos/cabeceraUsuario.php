@@ -83,6 +83,9 @@
           <li class="nav-item">
             <a class="nav-link" href="../vista/perfilUsuario.php">Perfil</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.php">Cerrar Sesión</a>
+          </li>
         </ul>
       </div>
 

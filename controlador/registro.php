@@ -30,10 +30,20 @@ $adminExistente->close();
 // -------------------------
 if (isset($_POST["registrar"])) {
     if (!empty($_POST["nombre"]) && !empty($_POST["telefono"]) && !empty($_POST["email"]) && !empty($_POST["contraseña"])) {
+        
         $nombre = $_POST["nombre"];
         $telefono = $_POST["telefono"];
         $correo = $_POST["email"];
-        $contrasena = password_hash($_POST["contraseña"], PASSWORD_DEFAULT); 
+        $passwordPlano = $_POST["contraseña"];
+
+        // 🔐 VALIDACIÓN DE CONTRASEÑA SEGURA
+        if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $passwordPlano)) {
+            $_SESSION['mensaje'] = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula y un número.";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        }
+
+        $contrasena = password_hash($passwordPlano, PASSWORD_DEFAULT); 
         $rol = "usuario";
         $foto = null;
 
@@ -60,7 +70,6 @@ if (isset($_POST["registrar"])) {
         $_SESSION['mensaje'] = "Alguno de los campos está vacío";
     }
 
-    // Redirigir para refrescar la página y mostrar modal
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
