@@ -1,61 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/sildevar.css">
 </head>
+
 <body>
-     <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <img class="logo" src="img/logo.jpeg" alt="logo">
+  <!-- ===== SIDEBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-user">
+    <div class="container-fluid">
 
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.jpeg" width="40" class="me-2">
+        Proctec Fire
+      </a>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
-                    </li>
+      <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="usuario.php">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vista/dispositivos.php">Dispositivos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="alertDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Alertas
+              <span class="badge bg-danger" id="alertCount">3</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="alertDropdown" style="min-width: 300px;">
+              <!-- Notificación 1 -->
+              <li>
+                <a class="dropdown-item d-flex align-items-start" href="#">
+                  <i class="bi bi-fire text-danger me-2 fs-5"></i>
+                  <div>
+                    <div class="fw-bold">Humo detectado</div>
+                    <small class="text-muted">Cocina · Hace 2 min</small>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <!-- Notificación 2 -->
+              <li>
+                <a class="dropdown-item d-flex align-items-start" href="#">
+                  <i class="bi bi-exclamation-triangle-fill text-warning me-2 fs-5"></i>
+                  <div>
+                    <div class="fw-bold">Temperatura elevada</div>
+                    <small class="text-muted">Sala de máquinas · Hace 5 min</small>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <!-- Notificación 3 -->
+              <li>
+                <a class="dropdown-item d-flex align-items-start" href="#">
+                  <i class="bi bi-bell text-info me-2 fs-5"></i>
+                  <div>
+                    <div class="fw-bold">Revisión del sistema</div>
+                    <small class="text-muted">Oficina · Hace 15 min</small>
+                  </div>
+                </a>
+              </li>
+              <!-- Si quieres agregar un enlace a ver todas -->
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item text-center fw-bold" href="../vista/alertas.php">Ver todas las alertas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vista/perfilUsuario.php">Perfil</a>
+          </li>
+        </ul>
+      </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reportes</a>
-                    </li>
+    </div>
+  </nav>
 
-                    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle position-relative" href="#" id="notificacionesDropdown" role="button" data-bs-toggle="dropdown">
-        <i class="bi bi-bell-fill fs-5"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            3
-        </span>
-    </a>
-
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><h6 class="dropdown-header">Notificaciones</h6></li>
-        <li><a class="dropdown-item" href="#">🔥 Incendio detectado en Zona Norte</a></li>
-        <li><a class="dropdown-item" href="#">⚠ Sensor desconectado</a></li>
-        <li><a class="dropdown-item" href="#">✅ Sistema funcionando correctamente</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item text-center text-primary" href="#">Ver todas</a></li>
-    </ul>
-</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Cerrar sesión</a>
-                    </li>
-
-                  
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main-content">
 </body>
+
 </html>

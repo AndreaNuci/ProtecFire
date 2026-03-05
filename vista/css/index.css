@@ -1,19 +1,31 @@
-/*  Colores personalizados */
+/* =========================================
+   🎨 VARIABLES
+========================================= */
 :root {
     --rojo-principal: #C62828;
+    --rojo-hover: #B71C1C;
     --negro-secundario: #1E1E1E;
-    --blanco: #FFFFFF;
+    --gris-fondo: #f5f5f5;
+    --gris-seccion: #eeeeee;
+    --blanco: #ffffff;
 }
- .logo{
-    
+
+/* =========================================
+   🌎 GENERAL
+========================================= */
+body {
+    background-color: var(--gris-fondo);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo {
     width: 150px;
     height: 70px;
-
- }
-body {
-    background-color: #f5f5f5;
 }
 
+/* =========================================
+   🔴 NAVBAR
+========================================= */
 .navbar-custom {
     background-color: var(--rojo-principal);
 }
@@ -30,35 +42,31 @@ body {
 
 .btn-login {
     background-color: #E0E0E0;
-    /* Gris claro */
-    color: #1E1E1E;
-    /* Texto oscuro */
+    color: var(--negro-secundario);
     border: none;
     font-weight: 500;
+    transition: 0.3s;
 }
 
 .btn-login:hover {
     background-color: #D6D6D6;
-    /* Gris un poco más oscuro */
-    color: black;
 }
 
-.modal-header {
-    background-color: var(--rojo-principal);
-    color: white;
-}
-
+/* =========================================
+   🔴 BOTONES GENERALES
+========================================= */
 .btn-primary {
     background-color: var(--rojo-principal);
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #B71C1C;
+    background-color: var(--rojo-hover);
 }
 
-/* Carrusel*/
-
+/* =========================================
+   🎞 BANNER
+========================================= */
 .banner-img {
     height: 500px;
     object-fit: cover;
@@ -71,105 +79,180 @@ body {
 
 .banner-overlay h1 {
     font-size: 3rem;
+    font-weight: bold;
 }
 
 .banner-overlay p {
     font-size: 1.2rem;
 }
 
-.icono-beneficio {
-    font-size: 4rem;   /* Tamaño grande */
+/* =========================================
+   📊 ESTADÍSTICAS
+========================================= */
+.estadisticas {
+    background-color: var(--gris-seccion);
+}
+
+.card-estadistica {
+    background-color: var(--blanco);
+    border: 3px solid var(--rojo-principal);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.card-estadistica:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card-estadistica.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.titulo-card {
+    color: var(--rojo-principal);
+    font-weight: bold;
+}
+
+.contador {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--negro-secundario);
+}
+
+/* =========================================
+   🔥 SOBRE NOSOTROS
+========================================= */
+/* =========================================
+   🔥 SOBRE NOSOTROS (FONDO OSCURO)
+========================================= */
+.sobre-nosotros {
+    background-color: var(--negro-secundario);
+    color: var(--blanco);
+}
+
+.sobre-nosotros .titulo-seccion {
     color: var(--rojo-principal);
 }
 
- /* SECCIÓN SOBRE NOSOTROS */
-
-.sobre-nosotros {
-    background-color: #ffffff;
+.sobre-nosotros .text-muted {
+    color: #cccccc !important;
 }
 
-.titulo-seccion {
-    color: #C62828;
-    font-size: 2.5rem;
-}
-
-.descripcion {
-    font-size: 1.05rem;
-    color: #333;
-    text-align: justify;
-}
-
-.lista-beneficios {
-    list-style: none;
-    padding: 0;
-}
-
-.lista-beneficios li {
-    margin-bottom: 10px;
-    font-weight: 500;
+.sobre-nosotros .descripcion {
+    color: #f1f1f1;
+    line-height: 1.8;
 }
 
 .imagen-sobre {
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
 }
 
-.imagen-sobre {
-    max-width: 35%;
+/* =========================================
+   ⭐ BENEFICIOS
+========================================= */
+.beneficio-card {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* FOOTER */
+.beneficio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
 
+.icono-beneficio {
+    font-size: 4rem;
+    color: var(--rojo-principal);
+}
+
+/* =========================================
+   📩 CONTACTO
+========================================= */
+.contacto {
+    background-color: var(--gris-seccion);
+}
+
+.titulo-contacto {
+    color: var(--rojo-principal);
+    font-weight: bold;
+    font-size: 2.3rem;
+}
+
+.subtitulo-contacto {
+    color: #555;
+}
+
+.info-contacto {
+    background-color: var(--negro-secundario);
+    color: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card-contacto {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.input-contacto {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.input-contacto:focus {
+    border-color: var(--rojo-principal);
+    box-shadow: 0 0 0 0.2rem rgba(198,40,40,0.25);
+}
+
+.btn-enviar {
+    background-color: var(--rojo-principal);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: var(--rojo-hover);
+}
+
+/* =========================================
+   ⚫ FOOTER
+========================================= */
 .footer-custom {
-    background-color: #1E1E1E; /* Negro elegante */
+    background-color: var(--negro-secundario);
 }
 
 .footer-custom h5 {
-    color: #C62828; /* Rojo principal */
+    color: var(--rojo-principal);
 }
 
 .footer-link {
-    color: #ffffff;
+    color: var(--blanco);
     text-decoration: none;
 }
 
 .footer-link:hover {
-    color: #C62828;
+    color: var(--rojo-principal);
 }
 
-/* CAJITAS */
- /* 🔥 SECCIÓN ESTADÍSTICAS */
-        .estadisticas {
-            background-color: #eeeeee;
-        }
-
-        .card-estadistica {
-            background-color: white;
-            border: 3px solid #C62828;
-            border-radius: 12px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .card-estadistica.mostrar {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .titulo-card {
-            color: #C62828;
-            font-weight: bold;
-        }
-
-        .contador {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #1E1E1E;
-        }
-    
-/*  Ajuste para celular */
+/* =========================================
+   📱 RESPONSIVE
+========================================= */
 @media (max-width: 768px) {
+
     .banner-img {
         height: 350px;
     }
@@ -182,6 +265,14 @@ body {
         font-size: 1rem;
     }
 
+    .imagen-sobre {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   🚨 ALERTA ANIMADA
+========================================= */
 .alert-danger {
     animation: pulse 1.5s infinite;
 }
@@ -190,5 +281,4 @@ body {
     0% { box-shadow: 0 0 0 0 rgba(220,53,69,0.7); }
     70% { box-shadow: 0 0 0 10px rgba(220,53,69,0); }
     100% { box-shadow: 0 0 0 0 rgba(220,53,69,0); }
-}
 }
