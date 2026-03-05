@@ -218,3 +218,22 @@ grid-template-columns:1fr;
 }
 
 }
+.btn-cambiar-foto{
+
+background:#dc2626;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+display:inline-block;
+
+}
+
+.btn-cambiar-foto input{
+display:none;
+}
+
+.btn-cambiar-foto:hover{
+background:#ef4444;
+}

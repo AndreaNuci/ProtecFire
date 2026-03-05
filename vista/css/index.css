@@ -1,101 +1,119 @@
-/*  Colores personalizados */
+/* ===== PALETA PREMIUM ===== */
 :root {
-    --rojo-principal: #C62828;
-    --negro-secundario: #1E1E1E;
-    --blanco: #FFFFFF;
+    --rojo-principal: #dc2626;
+    --rojo-hover: #b91c1c;
+    --negro-bg: #0f172a;
+    --gris-card: #1e293b;
+    --blanco: #ffffff;
+    --gris-texto: #cbd5e1;
 }
- .logo{
-    
-    width: 150px;
-    height: 70px;
 
- }
+/* ===== BODY ===== */
 body {
-    background-color: #f5f5f5;
+    background: var(--negro-bg);
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--blanco);
 }
 
+/* ===== NAVBAR ===== */
 .navbar-custom {
-    background-color: var(--rojo-principal);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+    width: 170px;
+    height: 75px;
+    object-fit: contain;
 }
 
 .navbar-brand,
 .nav-link {
     color: var(--blanco) !important;
     font-weight: 500;
+    transition: 0.3s;
 }
 
 .nav-link:hover {
-    color: #ffdada !important;
+    color: var(--rojo-principal) !important;
 }
 
+/* Botón login premium */
 .btn-login {
-    background-color: #E0E0E0;
-    /* Gris claro */
-    color: #1E1E1E;
-    /* Texto oscuro */
+    background: var(--rojo-principal);
+    color: white;
+    border-radius: 30px;
+    padding: 8px 20px;
     border: none;
-    font-weight: 500;
+    transition: 0.3s;
 }
 
 .btn-login:hover {
-    background-color: #D6D6D6;
-    /* Gris un poco más oscuro */
-    color: black;
+    background: var(--rojo-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220,38,38,0.4);
 }
 
+/* ===== MODAL ===== */
 .modal-header {
-    background-color: var(--rojo-principal);
-    color: white;
+    background: var(--negro-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .btn-primary {
-    background-color: var(--rojo-principal);
+    background: var(--rojo-principal);
     border: none;
+    border-radius: 8px;
 }
 
 .btn-primary:hover {
-    background-color: #B71C1C;
+    background: var(--rojo-hover);
 }
 
-/* Carrusel*/
-
+/* ===== CARRUSEL PREMIUM ===== */
 .banner-img {
-    height: 500px;
+    height: 600px;
     object-fit: cover;
-    filter: brightness(60%);
+    filter: brightness(45%);
 }
 
 .banner-overlay {
-    bottom: 20%;
+    bottom: 30%;
 }
 
 .banner-overlay h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 700;
 }
 
 .banner-overlay p {
     font-size: 1.2rem;
+    color: var(--gris-texto);
 }
 
+/* ===== ICONOS ===== */
 .icono-beneficio {
-    font-size: 4rem;   /* Tamaño grande */
+    font-size: 3.5rem;
     color: var(--rojo-principal);
+    margin-bottom: 15px;
 }
 
- /* SECCIÓN SOBRE NOSOTROS */
-
+/* ===== SECCIÓN SOBRE NOSOTROS ===== */
 .sobre-nosotros {
-    background-color: #ffffff;
+    background: var(--negro-bg);
+    padding: 80px 0;
 }
 
 .titulo-seccion {
-    color: #C62828;
-    font-size: 2.5rem;
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
 .descripcion {
     font-size: 1.05rem;
-    color: #333;
+    color: var(--gris-texto);
     text-align: justify;
 }
 
@@ -105,82 +123,88 @@ body {
 }
 
 .lista-beneficios li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-weight: 500;
+    color: var(--gris-texto);
 }
 
 .imagen-sobre {
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transition: 0.4s;
+    max-width: 100%;
 }
 
-.imagen-sobre {
-    max-width: 35%;
+.imagen-sobre:hover {
+    transform: scale(1.03);
 }
 
-/* FOOTER */
+/* ===== ESTADÍSTICAS PREMIUM ===== */
+.estadisticas {
+    background: #111827;
+    padding: 80px 0;
+}
 
+.card-estadistica {
+    background: var(--gris-card);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    transition: 0.4s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card-estadistica:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid var(--rojo-principal);
+}
+
+.titulo-card {
+    color: var(--gris-texto);
+    margin-bottom: 10px;
+}
+
+.contador {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--rojo-principal);
+}
+
+/* ===== FOOTER PREMIUM ===== */
 .footer-custom {
-    background-color: #1E1E1E; /* Negro elegante */
+    background: #0b1120;
+    padding: 60px 0;
 }
 
 .footer-custom h5 {
-    color: #C62828; /* Rojo principal */
+    color: var(--rojo-principal);
+    margin-bottom: 20px;
 }
 
 .footer-link {
-    color: #ffffff;
+    color: var(--gris-texto);
     text-decoration: none;
+    transition: 0.3s;
 }
 
 .footer-link:hover {
-    color: #C62828;
+    color: var(--rojo-principal);
 }
 
-/* CAJITAS */
- /* 🔥 SECCIÓN ESTADÍSTICAS */
-        .estadisticas {
-            background-color: #eeeeee;
-        }
-
-        .card-estadistica {
-            background-color: white;
-            border: 3px solid #C62828;
-            border-radius: 12px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .card-estadistica.mostrar {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .titulo-card {
-            color: #C62828;
-            font-weight: bold;
-        }
-
-        .contador {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #1E1E1E;
-        }
-
-/*  Ajuste para celular */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
     .banner-img {
-        height: 350px;
+        height: 400px;
     }
 
     .banner-overlay h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .banner-overlay p {
         font-size: 1rem;
     }
-
 
 }
