@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/perfil.css">
-</head>
-<body>
-    <?php
+<?php
 session_start();
 
 /* Crear usuario si no existe */
@@ -26,7 +17,8 @@ $usuario = $_SESSION['usuario'];
 
 $foto = $usuario['foto'] ?? "default.png";
 
-include __DIR__ . "/../vista/modulos/cabeceraUsuario.php";
+ 
+    include "modulos/cabeceraUsuario.php"; 
 ?>
 
 <div class="perfil-wrapper">
@@ -67,7 +59,9 @@ Cerrar sesión
 
 
 <!-- DATOS PERSONALES -->
-
+  <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/usuario.css">
 <div class="seccion">
 
 <h4>Datos personales</h4>
@@ -196,7 +190,4 @@ Cerrar sesión
 </div>
 </div>
 
-  <?php 
-  include "modulos/piePagina.php" ?>
-</body>
-</html>
+<?php include __DIR__ . "/../vista/modulos/piePagina.php"; ?>
