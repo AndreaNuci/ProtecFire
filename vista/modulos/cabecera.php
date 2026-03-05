@@ -9,6 +9,7 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="vista/css/index.css">
+    <link rel="stylesheet" href="css/perfil.css">
 </head>
 
 <body>

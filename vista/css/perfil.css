@@ -1,132 +1,220 @@
-/* Fondo general debajo del navbar */
-.perfil-wrapper {
-    width: 100%;
-    padding: 80px 0 60px 0;
-    background: linear-gradient(135deg, #f4f6f9, #e2e6ec);
+.perfil-wrapper{
+width:100%;
+min-height:100vh;
+padding:100px 40px;
+background:linear-gradient(135deg,#0f172a,#111827);
+display:flex;
+justify-content:center;
 }
 
-/* Tarjeta */
-.perfil-contenedor {
-    max-width: 950px;
-    width: 100%;
-    margin: 0 auto;   /* ← ESTA ES LA CLAVE */
-    background: #ffffff;
-    border-radius: 25px;
-    padding: 40px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+/* ============================= */
+/* CARD PRINCIPAL */
+/* ============================= */
+
+.perfil-card{
+width:100%;
+max-width:1300px;
+background:#0b1220;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,0,0,0.6);
+overflow:hidden;
+position:relative;
+border:1px solid rgba(255,255,255,0.05);
 }
 
-/* Header */
-.perfil-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
+/* ============================= */
+/* HEADER SUPERIOR */
+/* ============================= */
+
+.perfil-top{
+height:160px;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.perfil-header h4 {
-    font-weight: 700;
+/* ============================= */
+/* FOTO */
+/* ============================= */
+
+.foto-container{
+position:absolute;
+top:80px;
+left:80px;
 }
 
-/* Botón editar */
-.edit {
-    background: #dc3545;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: 0.3s;
+.foto-perfil{
+width:180px;
+height:180px;
+border-radius:18px;
+object-fit:cover;
+border:3px solid #dc2626;
+box-shadow:0 0 30px rgba(220,38,38,0.6);
 }
 
-.edit:hover {
-    background: #bb2d3b;
-}
-.navbar .logo {
-    height: 60px;
-    width: auto;
+/* ============================= */
+/* CUERPO */
+/* ============================= */
+
+.perfil-body{
+padding:120px 80px 60px 260px;
+color:#e5e7eb;
 }
 
-/* Perfil */
-.perfil-info {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
+/* Nombre */
+.perfil-body h2{
+font-size:26px;
+font-weight:700;
+margin-bottom:6px;
+color:#ffffff;
 }
 
-.foto-container {
-    position: relative;
+/* Email */
+.subtitulo{
+color:#9ca3af;
+margin-bottom:30px;
 }
 
-.foto-perfil {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 6px solid #f1f1f1;
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.acciones{
+display:flex;
+gap:15px;
+margin-bottom:40px;
 }
 
-.icono-camara {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: #dc3545;
-    color: white;
-    padding: 8px;
-    border-radius: 50%;
-    font-size: 14px;
-    cursor: pointer;
+.accion a{
+text-decoration:none;
+padding:10px 24px;
+border-radius:10px;
+font-weight:600;
+font-size:14px;
+transition:.3s;
 }
 
-/* Estado */
-.estado {
-    color: #6c757d;
-    margin-top: 5px;
+/* Botón principal rojo */
+.accion:first-child a{
+background:linear-gradient(135deg,#dc2626,#b91c1c);
+color:#fff;
+box-shadow:0 0 20px rgba(220,38,38,0.4);
 }
 
-/* Tabs */
-.tabs {
-    display: flex;
-    background: #f1f3f5;
-    border-radius: 15px;
-    padding: 5px;
-    margin-bottom: 30px;
+.accion:first-child a:hover{
+background:linear-gradient(135deg,#ef4444,#dc2626);
+transform:translateY(-3px);
 }
 
-.tabs button {
-    flex: 1;
-    border: none;
-    padding: 12px;
-    background: transparent;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+/* Botón secundario oscuro */
+.accion:last-child a{
+background:#1f2937;
+color:#e5e7eb;
+border:1px solid rgba(255,255,255,0.08);
 }
 
-.tabs .activo {
-    background: #dc3545;
-    color: white;
-    font-weight: 600;
+.accion:last-child a:hover{
+background:#374151;
 }
 
-/* Grid */
-.tab-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+/* ============================= */
+/* DESCRIPCIÓN */
+/* ============================= */
+
+.descripcion{
+max-width:900px;
+color:#9ca3af;
+margin-bottom:60px;
+line-height:1.6;
 }
 
-.item {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 15px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    transition: 0.3s;
+/* ============================= */
+/* SECCIONES */
+/* ============================= */
+
+.seccion{
+margin-bottom:60px;
 }
 
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.seccion h4{
+font-size:18px;
+font-weight:700;
+margin-bottom:25px;
+color:#ffffff;
+border-left:4px solid #dc2626;
+padding-left:12px;
+}
+
+/* ============================= */
+/* GRID 3 COLUMNAS */
+/* ============================= */
+
+.grid-info{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+/* ============================= */
+/* BOXES */
+/* ============================= */
+
+.box{
+background:#111827;
+padding:22px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,0.05);
+transition:.3s;
+}
+
+.box:hover{
+transform:translateY(-4px);
+box-shadow:0 0 20px rgba(220,38,38,0.2);
+border-color:rgba(220,38,38,0.5);
+}
+
+.box strong{
+display:block;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1px;
+color:#6b7280;
+margin-bottom:6px;
+}
+
+.box p{
+margin:0;
+font-weight:600;
+font-size:15px;
+color:#f9fafb;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media(max-width:1100px){
+.grid-info{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:800px){
+
+.perfil-wrapper{
+padding:60px 20px;
+}
+
+.perfil-body{
+padding:160px 40px 60px 40px;
+}
+
+.foto-container{
+left:50%;
+transform:translateX(-50%);
+}
+
+.grid-info{
+grid-template-columns:1fr;
+}
+
 }

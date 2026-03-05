@@ -1,115 +1,190 @@
 <?php
 session_start();
 
-// Si no existe usuario, lo creamos por defecto
+/* Crear usuario si no existe */
 if (!isset($_SESSION['usuario'])) {
     $_SESSION['usuario'] = [
         "nombre" => "Andrea Nuci Vázquez",
         "email" => "andrea.nuci@example.com",
         "telefono" => "55-1234-5678",
-        "skype" => "andrea.nuci",
         "ubicacion" => "CDMX, México",
-        "estado" => "Out of office",
-        "foto" => "default.png"
+        "foto" => "default.png",
+        "estado" => "Activo"
     ];
 }
 
 $usuario = $_SESSION['usuario'];
 
-// Definir foto
-$foto = isset($usuario['foto']) ? $usuario['foto'] : 'default.png';
-
-// Definir color del estado
-$color = "bg-success";
-if ($usuario['estado'] == "Out of office") {
-    $color = "bg-warning text-dark";
-}
+$foto = $usuario['foto'] ?? "default.png";
 
 include __DIR__ . "/../vista/modulos/cabecera.php";
 ?>
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
+<div class="perfil-wrapper">
 
-            <div class="card shadow-lg border-0 rounded-4 p-4">
+<div class="perfil-card">
 
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="fw-bold mb-0">Mi Perfil</h4>
+<div class="perfil-top"></div>
 
-                    <div class="d-flex gap-2">
-                        <a href="editarPerfil.php" class="btn btn-danger rounded-pill px-4">
-                            Editar Perfil
-                        </a>
+<!-- FOTO -->
+<div class="foto-container">
+<img src="uploads/<?php echo $foto; ?>" class="foto-perfil">
+</div>
 
-                        <a href="cerrarSesion.php" class="btn btn-dark rounded-pill px-4">
-                            Cerrar sesión
-                        </a>
-                    </div>
-                </div>
+<div class="perfil-body">
 
-                <div class="d-flex align-items-center gap-4 mb-4">
+<h2><?php echo $usuario['nombre'] ?? ''; ?></h2>
+<p class="subtitulo">
+<?php echo $usuario['email'] ?? ''; ?>
+</p>
 
-                    <img src="uploads/<?php echo $foto; ?>"
-                         class="rounded-circle border border-4 border-light shadow"
-                         width="160" height="160"
-                         style="object-fit: cover;">
+<div class="acciones">
 
-                    <div>
-                        <h3 class="fw-bold mb-1">
-                            <?php echo $usuario['nombre']; ?>
-                        </h3>
+<div class="accion">
+<a href="editarPerfil.php">
+<span>✏️</span>
+Editar perfil
+</a>
+</div>
 
-                        <span class="badge <?php echo $color; ?>">
-                            <?php echo $usuario['estado']; ?>
-                        </span>
-                    </div>
-                </div>
+<div class="accion">
+<a href="cerrarSesion.php">
+<span>🔒</span>
+Cerrar sesión
+</a>
+</div>
 
-                <div class="row g-4">
+</div>
 
-                    <div class="col-md-6">
-                        <div class="p-3 bg-light rounded-3 shadow-sm">
-                            <small class="text-muted">Correo electrónico</small>
-                            <p class="fw-semibold mb-0">
-                                <?php echo $usuario['email']; ?>
-                            </p>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="p-3 bg-light rounded-3 shadow-sm">
-                            <small class="text-muted">Teléfono</small>
-                            <p class="fw-semibold mb-0">
-                                <?php echo $usuario['telefono']; ?>
-                            </p>
-                        </div>
-                    </div>
+<!-- DATOS PERSONALES -->
 
-                    <div class="col-md-6">
-                        <div class="p-3 bg-light rounded-3 shadow-sm">
-                            <small class="text-muted">Skype</small>
-                            <p class="fw-semibold mb-0">
-                                <?php echo $usuario['skype']; ?>
-                            </p>
-                        </div>
-                    </div>
+<div class="seccion">
 
-                    <div class="col-md-6">
-                        <div class="p-3 bg-light rounded-3 shadow-sm">
-                            <small class="text-muted">Ubicación</small>
-                            <p class="fw-semibold mb-0">
-                                <?php echo $usuario['ubicacion']; ?>
-                            </p>
-                        </div>
-                    </div>
+<h4>Datos personales</h4>
 
-                </div>
+<div class="grid-info">
 
-            </div>
+<div class="box">
+<strong>Correo electrónico</strong>
+<p><?php echo $usuario['email'] ?? ''; ?></p>
+</div>
 
-        </div>
-    </div>
+<div class="box">
+<strong>Teléfono</strong>
+<p><?php echo $usuario['telefono'] ?? ''; ?></p>
+</div>
+
+<div class="box">
+<strong>Skype</strong>
+<p><?php echo $usuario['skype'] ?? 'No registrado'; ?></p>
+</div>
+
+<div class="box">
+<strong>Ubicación</strong>
+<p><?php echo $usuario['ubicacion'] ?? ''; ?></p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- LUGAR MONITOREADO -->
+
+<div class="seccion">
+
+<h4>Lugar monitoreado</h4>
+
+<div class="grid-info">
+
+<div class="box">
+<strong>Nombre del lugar</strong>
+<p><?php echo $usuario['nombre_lugar'] ?? 'No registrado'; ?></p>
+</div>
+
+<div class="box">
+<strong>Dirección</strong>
+<p><?php echo $usuario['direccion_lugar'] ?? 'No registrada'; ?></p>
+</div>
+
+<div class="box">
+<strong>Tipo de lugar</strong>
+<p><?php echo $usuario['tipo_lugar'] ?? 'Oficina'; ?></p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CONTACTOS DE EMERGENCIA -->
+
+<div class="seccion">
+
+<h4>Contactos de emergencia</h4>
+
+<div class="grid-info">
+
+<div class="box">
+<strong>Nombre contacto</strong>
+<p><?php echo $usuario['contacto_emergencia'] ?? 'No registrado'; ?></p>
+</div>
+
+<div class="box">
+<strong>Teléfono contacto</strong>
+<p><?php echo $usuario['telefono_emergencia'] ?? 'No registrado'; ?></p>
+</div>
+
+<div class="box">
+<strong>Relación</strong>
+<p><?php echo $usuario['relacion_contacto'] ?? 'No registrada'; ?></p>
+</div>
+
+<div class="box">
+<strong>Contacto secundario</strong>
+<p><?php echo $usuario['contacto_secundario'] ?? 'No registrado'; ?></p>
+</div>
+
+<div class="box">
+<strong>Teléfono secundario</strong>
+<p><?php echo $usuario['telefono_secundario'] ?? 'No registrado'; ?></p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEGURIDAD -->
+
+<div class="seccion">
+
+<h4>Seguridad de la cuenta</h4>
+
+<div class="grid-info">
+
+<div class="box">
+<strong>Último inicio de sesión</strong>
+<p><?php echo $usuario['ultimo_login'] ?? 'No disponible'; ?></p>
+</div>
+
+<div class="box">
+<strong>Dispositivo</strong>
+<p><?php echo $usuario['dispositivo'] ?? 'No disponible'; ?></p>
+</div>
+
+<div class="box">
+<strong>Verificación 2FA</strong>
+<p><?php echo $usuario['verificacion_2fa'] ?? 'Desactivada'; ?></p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
 </div>
 
 <?php include __DIR__ . "/../vista/modulos/piePagina.php"; ?>
