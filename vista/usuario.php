@@ -1,5 +1,3 @@
-
-    
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,22 +16,22 @@
 
 <!-- Navbar -->
  <?php
-    include "modulos/cabeceraUsuario.php"; ?> <br><br>
+    include "modulos/cabeceraUsuario.php"; ?> 
 
 <!-- Banner de alerta -->
-<div class="container mt-3">
-  <div class="alert alert-danger d-flex align-items-center shadow-lg rounded-4 border-0" role="alert">
+<div class="container mt-4">
+  <div class="alert custom-alert d-flex align-items-center rounded-4 border-0" role="alert">
     
-    <div class="me-3 fs-2">
+    <div class="me-3 fs-3">
       <i class="bi bi-exclamation-triangle-fill"></i>
     </div>
 
     <div class="flex-grow-1">
-      <h6 class="mb-1 fw-bold">🔥 Alerta Crítica</h6>
-      <small>Humo detectado en la Cocina • 10:42 AM</small>
+      <h6 class="mb-1 fw-bold text-white">🔥 Alerta Crítica</h6>
+      <small class="text-white">Humo detectado en la Cocina • 10:42 AM</small>
     </div>
 
-    <span class="badge bg-dark px-3 py-2 rounded-pill">
+    <span class="badge status-badge px-3 py-2 rounded-pill">
       ACTIVA
     </span>
 
@@ -43,54 +41,83 @@
 <div class="container my-4">
 
   <!-- Zonas / Sensores -->
-  <div class="row g-3 mb-4">
+  <div class="row g-4 mb-4">
+
+    <!-- Cocina -->
     <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h5>Cocina</h5>
-        <p>Humo: <span class="sensor-status status-danger">400 ppm</span></p>
-        <p>Temperatura: <span class="sensor-status status-danger">60°C</span></p>
+      <div class="card-sensor card-danger text-center">
+        <h5 class="mb-3">🔥 Cocina</h5>
+        <p>Humo: <span class="sensor-status">400 ppm</span></p>
+        <p>Temperatura: <span class="sensor-status">60°C</span></p>
       </div>
     </div>
+
+    <!-- Sala -->
     <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h5>Sala</h5>
-        <p>Humo: <span class="sensor-status status-normal">50 ppm</span></p>
-        <p>Temperatura: <span class="sensor-status status-normal">25°C</span></p>
+      <div class="card-sensor card-normal text-center">
+        <h5 class="mb-3">🛋 Sala</h5>
+        <p>Humo: <span class="sensor-status">50 ppm</span></p>
+        <p>Temperatura: <span class="sensor-status">25°C</span></p>
       </div>
     </div>
+
+    <!-- Almacén -->
     <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h5>Almacén</h5>
-        <p>Gas: <span class="sensor-status status-warning">70 ppm</span></p>
-        <p>Temperatura: <span class="sensor-status status-normal">22°C</span></p>
+      <div class="card-sensor card-warning text-center">
+        <h5 class="mb-3">📦 Almacén</h5>
+        <p>Gas: <span class="sensor-status">70 ppm</span></p>
+        <p>Temperatura: <span class="sensor-status">22°C</span></p>
       </div>
     </div>
+
+    <!-- Horno -->
     <div class="col-md-3">
-      <div class="card p-3 text-center">
-        <h5>Horno</h5>
-        <p>Temperatura: <span class="sensor-status status-danger">80°C</span></p>
+      <div class="card-sensor card-danger text-center">
+        <h5 class="mb-3">🔥 Horno</h5>
+        <p>Temperatura: <span class="sensor-status">80°C</span></p>
       </div>
     </div>
+
   </div>
 
   <!-- Gráficas -->
-  <div class="row g-3">
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5 class="text-center">Temperatura Cocina</h5>
-        <canvas id="tempCocina"></canvas>
-      </div>
+  <!-- Gráficas -->
+<div class="row g-4">
+
+  <!-- Cocina - Línea -->
+  <div class="col-md-6">
+    <div class="card-sensor">
+      <h5 class="text-center mb-3">🔥 Temperatura Cocina</h5>
+      <canvas id="graficaCocina"></canvas>
     </div>
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5 class="text-center">Nivel de Humo Cocina</h5>
-        <canvas id="humoCocina"></canvas>
-      </div>
+  </div>
+
+  <!-- Sala - Barra -->
+  <div class="col-md-6">
+    <div class="card-sensor">
+      <h5 class="text-center mb-3">🛋 Temperatura Sala</h5>
+      <canvas id="graficaSala"></canvas>
+    </div>
+  </div>
+
+  <!-- Almacén - Radar -->
+  <div class="col-md-6">
+    <div class="card-sensor">
+      <h5 class="text-center mb-3">📦 Gas Almacén</h5>
+      <canvas id="graficaAlmacen"></canvas>
+    </div>
+  </div>
+
+  <!-- Horno - Doughnut -->
+  <div class="col-md-6">
+    <div class="card-sensor">
+      <h5 class="text-center mb-3">🔥 Nivel Horno</h5>
+      <canvas id="graficaHorno"></canvas>
     </div>
   </div>
 
 </div>
-
+</div>
 <!-- Chatbot -->
 <div id="chatbot">
   <h5>Chatbot</h5>
@@ -99,57 +126,86 @@
   </div>
   <input type="text" class="form-control form-control-sm" placeholder="Escribe aquí..." />
 </div>
-
+  <?php 
+  include "modulos/piePagina.php" ?>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Chart.js -->
 <script>
-  const ctxTemp = document.getElementById('tempCocina').getContext('2d');
-  const tempChart = new Chart(ctxTemp, {
-    type: 'line',
-    data: {
-      labels: ['12:00','12:10','12:20','12:30','12:40','12:50'],
-      datasets: [{
-        label: 'Temperatura (°C)',
-        data: [25, 30, 35, 45, 50, 60],
-        borderColor: '#dc3545',
-        backgroundColor: 'rgba(220,53,69,0.2)',
-        tension: 0.3
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { labels: { color: '#fff' } } },
-      scales: {
-        x: { ticks: { color: '#fff' }, grid: { color: '#333' } },
-        y: { ticks: { color: '#fff' }, grid: { color: '#333' } }
-      }
-    }
-  });
+Chart.defaults.color = "#616364";
 
-  const ctxHumo = document.getElementById('humoCocina').getContext('2d');
-  const humoChart = new Chart(ctxHumo, {
-    type: 'line',
-    data: {
-      labels: ['12:00','12:10','12:20','12:30','12:40','12:50'],
-      datasets: [{
-        label: 'Humo (ppm)',
-        data: [50, 80, 120, 250, 300, 400],
-        borderColor: '#ffc107',
-        backgroundColor: 'rgba(255,193,7,0.2)',
-        tension: 0.3
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { labels: { color: '#fff' } } },
-      scales: {
-        x: { ticks: { color: '#fff' }, grid: { color: '#333' } },
-        y: { ticks: { color: '#fff' }, grid: { color: '#333' } }
-      }
-    }
-  });
+/* 🔥 Cocina - Línea */
+new Chart(document.getElementById('graficaCocina'), {
+  type: 'line',
+  data: {
+    labels: ['12:00','12:10','12:20','12:30','12:40','12:50'],
+    datasets: [{
+      label: 'Temp °C',
+      data: [25,30,35,45,50,60],
+      borderColor: '#ef4444',
+      backgroundColor: 'rgba(239,68,68,0.2)',
+      tension: 0.4,
+      fill: true
+    }]
+  }
+});
+
+/* 🛋 Sala - Barras */
+new Chart(document.getElementById('graficaSala'), {
+  type: 'bar',
+  data: {
+    labels: ['12:00','12:10','12:20','12:30','12:40','12:50'],
+    datasets: [{
+      label: 'Temp °C',
+      data: [22,23,24,25,26,25],
+      backgroundColor: '#22c55e'
+    }]
+  }
+});
+
+/* 📦 Almacén - Radar */
+new Chart(document.getElementById('graficaAlmacen'), {
+  type: 'radar',
+  data: {
+    labels: ['Gas','Temp','Humedad','Ventilación','Riesgo'],
+    datasets: [{
+      label: 'Nivel',
+      data: [70,22,40,60,50],
+      backgroundColor: 'rgba(250,204,21,0.3)',
+      borderColor: '#facc15'
+    }]
+  }
+});
+
+/* 🔥 Horno - Doughnut */
+new Chart(document.getElementById('graficaHorno'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Seguro','Alerta','Crítico'],
+    datasets: [{
+      data: [20,30,50],
+      backgroundColor: ['#22c55e','#facc15','#ef4444']
+    }]
+  }
+});
+</script>
+<script>
+function actualizarEstado(card, valor, limiteNormal, limiteWarning) {
+  card.classList.remove("card-normal", "card-warning", "card-danger");
+
+  if (valor < limiteNormal) {
+    card.classList.add("card-normal");
+  } else if (valor < limiteWarning) {
+    card.classList.add("card-warning");
+  } else {
+    card.classList.add("card-danger");
+  }
+}
+
+/* Ejemplo para Cocina */
+const cocinaCard = document.querySelectorAll(".card-sensor")[0];
+actualizarEstado(cocinaCard, 400, 100, 300);
 </script>
 
 </body>

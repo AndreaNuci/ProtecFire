@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vista/css/styles.css">
 
 </head>
 
@@ -185,6 +186,28 @@
         </div>
 
     </div>
+
+    <!-- BOTON FLOTANTE -->
+<div class="chat-boton" onclick="abrirChat()">
+<i class="bi bi-robot"></i>
+</div>
+<!-- CHAT -->
+<div class="chat-container" id="chatBox">
+<div class="chat-header">
+Asistente contra Incendios
+<span onclick="cerrarChat()">✖</span>
+</div>
+<div class="chat-body" id="chatMensajes">
+<div class="bot">
+Hola 👋 Soy tu asistente contra incendios.
+</div>
+</div>
+<div class="chat-footer">
+<input type="text" id="mensaje" placeholder="Escribe tu pregunta...">
+<button onclick="enviarMensaje()">Enviar</button>
+</div>
+</div>
+
 </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -194,6 +217,42 @@
 
     include "modulos/piePagina.php";
     ?>
+
+
+
+
+<script>
+function abrirChat(){
+document.getElementById("chatBox").style.display="flex";
+}
+function cerrarChat(){
+document.getElementById("chatBox").style.display="none";
+}
+function enviarMensaje(){
+let texto = document.getElementById("mensaje").value;
+if(texto=="") return;
+let chat = document.getElementById("chatMensajes");
+chat.innerHTML += "<div class='user'>"+texto+"</div>";
+document.getElementById("mensaje").value="";
+fetch("./api.php",{
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+body:"mensaje="+encodeURIComponent(texto)
+})
+.then(res=>res.json())
+.then(data=>{
+chat.innerHTML += "<div class='bot'>"+data.respuesta+"</div>";
+chat.scrollTop = chat.scrollHeight;
+})
+.catch(error=>{
+chat.innerHTML += "<div class='bot'>Error de conexión</div>";
+});
+}
+
+</script>
+
 </body>
 
 </html>

@@ -1,0 +1,59 @@
+.tablewrap{
+  overflow:auto;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+  background: rgba(0,0,0,.15);
+}
+
+.table th,
+.table td{
+  padding:10px 10px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.table th{
+  color: var(--muted);
+  text-align:left;
+  font-size:12px;
+}
+
+.table tr:hover td{
+  background: rgba(255,255,255,.02);
+}
+
+.right{ text-align:right; }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:3px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  font-weight:800;
+  font-size:12px;
+}
+
+.badge--ok{
+  border-color: rgba(46,204,113,.35);
+  background: rgba(46,204,113,.12);
+}
+
+.badge--warn{
+  border-color: rgba(241,196,15,.35);
+  background: rgba(241,196,15,.12);
+}
+
+.badge--bad{
+  border-color: rgba(231,76,60,.35);
+  background: rgba(231,76,60,.12);
+}

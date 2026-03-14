@@ -1,0 +1,33 @@
+:root{
+  --bg:#0f1216;
+  --panel:#141922;
+  --panel2:#10151d;
+  --card:#171d27;
+  --text:#e8edf4;
+  --muted:#aab4c3;
+  --line:#263041;
+
+  --primary:#c72828;
+  --primary2:#f04646;
+  --ok:#2ecc71;
+  --warn:#f1c40f;
+  --bad:#e74c3c;
+
+  --radius:16px;
+  --shadow: 0 10px 28px rgba(0,0,0,.35);
+}
+
+*{ box-sizing:border-box; }
+
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg), #0b0d10);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+}
+
+h1,h2,h3{ margin:0; }
+
+p{ margin:6px 0 0; color:var(--muted); }
