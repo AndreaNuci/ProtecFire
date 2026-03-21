@@ -1,0 +1,22 @@
+# Archivos de Windows
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+
+# Configuraciones de IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Dependencias y cachés
+node_modules/
+__pycache__/
+
+# Otros archivos temporales
+*.bak
+*.swp
+*.DS_Store
