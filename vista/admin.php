@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ProtecFire Admin | Centro de Control IoT</title>
 
-  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="admin/css/admin.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 
