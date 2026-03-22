@@ -223,34 +223,57 @@ Hola 👋 Soy tu asistente contra incendios.
 
 <script>
 function abrirChat(){
-document.getElementById("chatBox").style.display="flex";
-}
-function cerrarChat(){
-document.getElementById("chatBox").style.display="none";
-}
-function enviarMensaje(){
-let texto = document.getElementById("mensaje").value;
-if(texto=="") return;
-let chat = document.getElementById("chatMensajes");
-chat.innerHTML += "<div class='user'>"+texto+"</div>";
-document.getElementById("mensaje").value="";
-fetch("./api.php",{
-method:"POST",
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
-body:"mensaje="+encodeURIComponent(texto)
-})
-.then(res=>res.json())
-.then(data=>{
-chat.innerHTML += "<div class='bot'>"+data.respuesta+"</div>";
-chat.scrollTop = chat.scrollHeight;
-})
-.catch(error=>{
-chat.innerHTML += "<div class='bot'>Error de conexión</div>";
-});
+    document.getElementById("chatBox").style.display="flex";
 }
 
+function cerrarChat(){
+    document.getElementById("chatBox").style.display="none";
+}
+
+function enviarMensaje(){
+    let texto = document.getElementById("mensaje").value;
+    if(texto=="") return;
+
+    let chat = document.getElementById("chatMensajes");
+
+    // mostrar mensaje usuario
+    chat.innerHTML += "<div class='user'>"+texto+"</div>";
+
+    document.getElementById("mensaje").value="";
+
+    fetch("./api.php",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/x-www-form-urlencoded"
+        },
+        body:"mensaje="+encodeURIComponent(texto)
+    })
+    .then(res => res.text()) // 👈 CAMBIO IMPORTANTE
+    .then(texto => {
+        console.log("Respuesta cruda:", texto); // 👈 DEBUG
+
+        let data;
+        try{
+            data = JSON.parse(texto);
+        }catch(e){
+            chat.innerHTML += "<div class='bot'>Error: respuesta inválida del servidor</div>";
+            return;
+        }
+
+        let respuesta = data.respuesta || "Sin respuesta";
+
+        if(data.detalle){
+            respuesta += "<br><small>"+data.detalle+"</small>";
+        }
+
+        chat.innerHTML += "<div class='bot'>"+respuesta+"</div>";
+        chat.scrollTop = chat.scrollHeight;
+    })
+    .catch(error=>{
+        console.error(error);
+        chat.innerHTML += "<div class='bot'>Error de conexión: "+error.message+"</div>";
+    });
+}
 </script>
 
 </body>
