@@ -1,60 +1,67 @@
 <?php
+header("Content-Type: application/json; charset=UTF-8");
 
-header("Content-Type: application/json");
+$mensaje = trim($_POST["mensaje"] ?? "");
 
-$mensaje = $_POST["mensaje"] ?? "";
-
-if($mensaje==""){
+if ($mensaje === "") {
     echo json_encode([
-        "respuesta"=>"Escribe algo"
-    ]);
+        "respuesta" => "Escribe algo"
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-$apiKey = "AIzaSyADpMNU2BAGRsvEhq-vV7ID3XDfC69Sz-0";
+$token = "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";
 
-$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=".$apiKey;
+$systemPrompt = "Eres un asistente virtual del sistema ProtecFire, una plataforma IoT para la detección y prevención de incendios.
 
+Tu función es ayudar a los usuarios con información clara, breve y útil sobre incendios, humo, gases, sensores y alertas.
 
-$prompt = "Eres un asistente experto en prevención de incendios para un sistema IoT.
+Reglas:
+- Responde en español
+- Sé claro y directo
+- No des respuestas largas
+- Da recomendaciones prácticas
+- Si es una emergencia, indica llamar al 911
+- No inventes información técnica compleja
+- Si la pregunta no trata sobre incendios, humo, gas, sensores o seguridad, responde amablemente que solo puedes ayudar en esos temas
 
-Responde claro y corto.
-
-Pregunta del usuario:
-".$mensaje;
-
+Contexto del sistema:
+ProtecFire monitorea temperatura, humo y gases en tiempo real usando sensores IoT (como ESP32). Detecta riesgos y genera alertas automáticas.";
 
 $data = [
-"contents"=>[
-[
-"parts"=>[
-[
-"text"=>$prompt
-]
-]
-]
-]
+    "model" => "katanemo/Arch-Router-1.5B:hf-inference",
+    "messages" => [
+        [
+            "role" => "system",
+            "content" => $systemPrompt
+        ],
+        [
+            "role" => "user",
+            "content" => $mensaje
+        ]
+    ],
+    "max_tokens" => 180,
+    "temperature" => 0.7
 ];
 
 $options = [
-"http"=>[
-"header"=>"Content-Type: application/json",
-"method"=>"POST",
-"content"=>json_encode($data)
-]
+    "http" => [
+        "header" => "Content-Type: application/json\r\nAuthorization: Bearer $token",
+        "method" => "POST",
+        "content" => json_encode($data),
+        "timeout" => 60
+    ]
 ];
 
 $context = stream_context_create($options);
+$response = file_get_contents("https://router.huggingface.co/v1/chat/completions", false, $context);
+$resultado = json_decode($response, true);
 
-$response = file_get_contents($url,false,$context);
-
-$resultado = json_decode($response,true);
-
-$respuesta = $resultado["candidates"][0]["content"]["parts"][0]["text"] ?? "Sin respuesta";
-
+$respuesta = $resultado["choices"][0]["message"]["content"] ?? "El modelo no devolvió texto.";
 
 echo json_encode([
-"respuesta"=>$respuesta
+    "respuesta" => trim($respuesta)
+], JSON_UNESCAPED_UNICODE);
 ]);
 
 ?>
