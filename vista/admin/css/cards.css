@@ -1,0 +1,119 @@
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.card__head{
+  padding:14px 14px 12px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.card__head h3{ font-size:15px; }
+
+.card__head p{ font-size:12px; }
+
+.card__body{ padding:14px; }
+
+.kpi{ padding:16px; }
+
+.kpi__label{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.kpi__value{
+  font-size:28px;
+  font-weight:900;
+  margin-top:6px;
+  letter-spacing:.3px;
+}
+
+.kpi__meta{
+  margin-top:8px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+}
+
+.status{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  display:inline-block;
+  background: rgba(255,255,255,.25);
+}
+
+.status--ok{ background: rgba(46,204,113,.9); }
+
+.status--warn{ background: rgba(241,196,15,.9); }
+
+.status--bad{ background: rgba(231,76,60,.9); }
+
+.btn{
+  border:none;
+  border-radius:14px;
+  padding:10px 12px;
+  font-weight:800;
+  cursor:pointer;
+  color:var(--text);
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.btn:hover{ filter: brightness(1.06); }
+
+.btn--primary{
+  background: linear-gradient(180deg, var(--primary2), var(--primary));
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 10px 24px rgba(199,40,40,.25);
+}
+
+.btn--ghost{
+  background: transparent;
+  border-color: rgba(255,255,255,.10);
+}
+
+.w-full{ width:100%; }
+
+.iconbtn{
+  width:40px;
+  height:40px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  cursor:pointer;
+}
+
+.iconbtn:hover{ filter: brightness(1.1); }
+
+.segmented{
+  display:flex;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.segmented__btn{
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  padding:8px 10px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.segmented__btn.is-active{
+  background: rgba(240,70,70,.16);
+  color: var(--text);
+}
