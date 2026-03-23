@@ -16,12 +16,13 @@
 
     <!-- CSS propio -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../vista/css/styles.css">
 </head>
 
 <body>
 
 <?php 
-include __DIR__ . "/modulos/cabecera.php"; ?>
+   include "modulos/cabecera.php"; ?>
 
 <!-- HERO -->
 <section class="bg-dark text-white text-center py-5" data-aos="fade-down">

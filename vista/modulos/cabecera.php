@@ -16,7 +16,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <img class="logo" src="vista/img/logo.jpeg" alt="logo">
+            <img src="/protecfire/vista/img/logo.jpeg" class="logo">
 
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -47,9 +47,9 @@
     </nav>
 
   <?php 
-  include "modelo/conexion.php";
-  include "controlador/registro.php";
-  ?>  
+include __DIR__ . "/../../modelo/conexion.php";
+include __DIR__ . "/../../controlador/registro.php";
+?>
 <!-- 🔐 MODAL LOGIN -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog">

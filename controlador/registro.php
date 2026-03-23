@@ -1,5 +1,5 @@
 <?php
-include "modelo/conexion.php";
+include __DIR__ . "/../modelo/conexion.php";
 
 // -------------------------
 // CREAR ADMIN AUTOMÁTICO
